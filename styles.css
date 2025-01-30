@@ -134,12 +134,13 @@ ul {
     margin: 20px 0;
 }
 p{
-    color: var(--color-primary);
+    color: #05DF05;
+    font-size: 20px;
     margin-top: 10px;
 }
 .result-list {
-    margin-top: 15px;
-    color: #05DF05;
+    margin: 0 0 30px 0;
+    color: rgb(105, 1, 105);
     font-size: 22px;
     font-weight: bold;
     text-align: center;

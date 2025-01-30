@@ -1,30 +1,41 @@
-const input = document.querySelector('input');
-
-let listaNomes = [];
-let mensagemErro = 'Por favor, insira um nome.';
+let amigos = [];
+let mensagem = document.querySelector('p')
 
 function adicionarAmigo() {
-    let nomeAmigo = input.value
-    let tagUl = document.querySelector('#listaAmigos')
-    let novaLista = document.createElement('li')
+    const input = document.querySelector('input');
+    let nomeAmigo = input.value.trim() // limpa espaços
     if (nomeAmigo !== '') {
-        novaLista.textContent = nomeAmigo;
-        tagUl.appendChild(novaLista)
-        listaNomes.push(nomeAmigo)
+        amigos.push(nomeAmigo)
+        renderizarLista()
+        mensagem.textContent = ''
     }
     else {
-        document.querySelector('p').textContent = mensagemErro
+        mensagem.textContent = 'Por favor, digite um nome.';
     }
     input.value = '';
-    console.log(listaNomes)
+
+    console.log(amigos)
+}
+function renderizarLista() {
+    const lista = document.querySelector('#resultado')
+    lista.innerHTML = ""
+
+    for (let i = 0; i < amigos.length; i++) {
+        let novoAmigo = document.createElement('li')
+        novoAmigo.textContent = amigos[i];
+
+        lista.appendChild(novoAmigo)
+    }
 }
 function sortearAmigo() {
-    let nomeSorteado = Math.floor(Math.random() * listaNomes.length)
-    let amigoSorteado = listaNomes[nomeSorteado]
-
-
-    document.querySelector('p').textContent = `O seu amigo secreto é ${amigoSorteado}`
-    console.log(listaNomes)
+    if (amigos.length == '') {
+        mensagem.textContent = 'Digite os nome dos seus amigos!';
+    } else {
+        let nomeSorteado = Math.floor(Math.random() * amigos.length)
+        let amigoSorteado = amigos[nomeSorteado]
+        document.querySelector('#resultado').textContent = `O seu amigo secreto é ${amigoSorteado}`
+    }
+    console.log(amigos)
 }
 
 
